@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Creative Coding</title>
+  </head>
+  <body">
+    <div id="page">
+      <canvas id="first-canvas" width="900" height="600">
+        <div id="fallback-page">
+          <h1>Welcome!</h1>
+          <p>
+            This is supposed to be my first HTML Canvas thing, but unfortunately
+            it's not supported in your browser.
+          </p>
+        </div>
+      </canvas>
+    </div>
+    <input type="checkbox" name="draw" id="draw">
+    <label for="draw">Go!</label>
+    <label for="red">
+      Red
+    <input
+      type="range"
+      name="red"
+      id="red"
+      min="0"
+      max="255"
+      value="255"
+      step="2"
+      class="slider"
+      orient="vertical"
+      style="width: 25px;margin: 2em;"
+    />
+    </label>
+    <label for="green">Green
+      <input
+        type="range"
+        name="green"
+        id="green"
+        min="0"
+        max="255"
+        value="255"
+        step="2"
+        class="slider"
+        orient="vertical"
+        style="width: 25px;margin: 2em;"
+      />
+    </label>
+    <label for="blue">Blue
+      <input
+        type="range"
+        name="blue"
+        id="blue"
+        min="0"
+        max="255"
+        value="255"
+        step="2"
+        class="slider"
+        orient="vertical"
+        style="width: 25px;margin: 2em;"
+      />
+    </label>
+    <label for="alpha">Alpha
+      <input
+        type="range"
+        name="alpha"
+        id="alpha"
+        min="0"
+        max="1"
+        value="1"
+        step="0.01"
+        class="slider"
+        orient="vertical"
+        disabled
+      />
+    </label>
+    <div id="swatch"></div>
+    <script src="index.js"></script>
+  </body>
+</html>
