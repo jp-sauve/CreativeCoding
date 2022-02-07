@@ -5,7 +5,7 @@ function initializeGL() {
   const canvas = document.getElementById("GLCanvas");
   gGL = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
   if (gGL !== null) {
-    gGL.clearColor(0.9, 0.9, 0.9, 1.0);
+    gGL.clearColor(0.2, 0.9, 0.2, 1.0);
     // A: init vertex buffer
     initSquareBuffer();
     // B: Load and compile vertex and fragment shaders
