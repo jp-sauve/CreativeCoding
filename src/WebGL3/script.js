@@ -43,3 +43,5 @@ const t = setInterval(() => {
   gl.clear(gl.COLOR_BUFFER_BIT);
   drawBoxes(gl, program, Math.floor(Math.random() * 25))
 }, 1000)
+
+// This is interesting, but not exactly what I'm looking for
