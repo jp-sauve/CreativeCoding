@@ -1,5 +1,6 @@
 import { vertexShaderSource, fragmentShaderSource } from "./shaderSource.js";
 import { compileShader, createProgram } from "./shaderSupport.js";
+import { drawBoxes } from "./drawBoxes.js";
 
 const canvas = document.getElementById("canv");
 const gl = canvas.getContext("webgl2");
@@ -15,23 +16,30 @@ let positionAttributeLocation = gl.getAttribLocation(program, "a_position");
 let resolutionUniformLocation = gl.getUniformLocation(program, "u_resolution");
 let positionBuffer = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-var positions = [10, 20, 80, 10, 10, 30, 10, 30, 80, 10, 80, 30];
-gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
-let vao = gl.createVertexArray();
-gl.bindVertexArray(vao);
+
+//gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+//let vao = gl.createVertexArray();
+//gl.bindVertexArray(vao);
 gl.enableVertexAttribArray(positionAttributeLocation);
+
 let size = 2;
 let type = gl.FLOAT;
 let normalize = false;
 let stride = 0;
 let offset = 0;
 gl.vertexAttribPointer(positionAttributeLocation, size, type, normalize, stride, offset);
-gl.clearColor(0.1, 0, 0, 2, 1);
+
+gl.clearColor(0.1, 0, 0, 2, 0.9);
 gl.clear(gl.COLOR_BUFFER_BIT);
 gl.useProgram(program);
 gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height);
-gl.bindVertexArray(vao);
-let primitiveType = gl.TRIANGLES;
-let aoffset = 0;
-let count = 6;
-gl.drawArrays(primitiveType, aoffset, count);
+//gl.bindVertexArray(vao);
+gl.enable(gl.BLEND)
+gl.disable(gl.CULL_FACE);
+gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
+//gl.drawArrays(primitiveType, aoffset, count);
+//drawBoxes(gl, program, Math.floor(Math.random() * 10));
+const t = setInterval(() => {
+  gl.clear(gl.COLOR_BUFFER_BIT);
+  drawBoxes(gl, program, Math.floor(Math.random() * 25))
+}, 1000)
